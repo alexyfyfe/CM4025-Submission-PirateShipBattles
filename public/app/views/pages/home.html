@@ -1,0 +1,17 @@
+<script>game.destroy();</script>
+
+<div class="jumbotron text-center">
+  <h1>Welcome to PirateShip Battles!</h1>
+
+  <div ng-if="!main.loggedIn">
+    <p>Login to start playing or register.</p>
+    <a href="/register" class="btn btn-primary">Register</a>
+    <a href="/login" class="btn btn-success">Login</a>
+  </div>
+
+  <div ng-if="main.loggedIn">
+    <p>Welcome back {{main.user.username}}!</p>
+    <a href="/battle/{{main.user._id}}" class="btn btn-primary">Start Battling!</a>
+  </div>
+
+</div>

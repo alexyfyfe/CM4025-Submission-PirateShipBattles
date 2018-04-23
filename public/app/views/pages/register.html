@@ -1,0 +1,40 @@
+<script>game.destroy();</script>
+
+<div class="row col-md-6 col-md-offset-3">
+
+
+    <div class="jumbotron">
+        <h1>Register</h1>
+
+        <form ng-submit="user.saveUser()">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" ng-model="user.userData.name">
+            </div>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" ng-model="user.userData.username">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" ng-model="user.userData.password">
+            </div>
+
+            <div class="alert alert-danger" ng-if="user.error">
+                {{ login.error }}
+            </div>
+
+            <button type="submit" class="btn btn-block btn-primary">
+                <span ng-if="!user.processing">Register</span>
+                <span ng-if="user.processing" class="spinner"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+            </button>
+            <div id="registerButtonBlock">
+                <a id="registerHomeButton" href="/" class="btn btn-block btn-warning">Home</a>
+                <a id="registerLoginButton" href="/login" class="btn btn-block btn-success">Login</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+<script>game.destroy();</script>
+
+<div class="page-header">
+    <h1 ng-if="user.type == 'edit'">Update Account</h1>
+</div>
+
+<form class="form-horizontal">
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" ng-value="main.user.name" value="" readonly>
+        </div>
+        <div class="col-sm-20">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editNameModal">
+                Change Name
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" ng-value="main.user.username" value="" readonly>
+        </div>
+        <div class="col-sm-20">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editUsernameModal">
+                Change Username
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-6">
+            <input type="password" class="form-control" value="*******" readonly>
+        </div>
+        <div class="col-sm-20">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPasswordModal">
+                Change Password
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<h4>Please relog to update changes</h4>
+
+<!-- Edit Name Modal -->
+<div class="modal fade" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNameModalLabel">Update Name Below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="user.saveUser()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Old Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-value="main.user.name" value="" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">New Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" ng-model="user.userData.name" placeholder="Type name here" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" ng-if="user.type == 'edit'">Update</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Username Modal -->
+<div class="modal fade" id="editUsernameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUsernameModalLabel">Update Username Below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="user.saveUser()">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Old Username</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" value="" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">New Username</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="user.userData.username" placeholder="Type username here" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" ng-if="user.type == 'edit'">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Username Modal -->
+<div class="modal fade" id="editPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPasswordModalLabel">Update Password Below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="user.saveUser()">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Old Password</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="user.userData.oldPassword" placeholder="Type existing password here" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">New Password</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-model="user.userData.password" placeholder="Type new password here" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" ng-if="user.type == 'edit'">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row show-hide-message" ng-show="user.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ user.message }}
+        </div>
+
+    </div>
+</div>

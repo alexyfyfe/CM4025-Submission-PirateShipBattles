@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!--Game Scripts-->
+
+
+    <!-- Some simple styles and fonts -->
+    <style type="text/css">
+        /*body,html { !* Remove margins *!*/
+        /*margin: 0px;*/
+        /*position: relative;*/
+        /*background-color:#9FC7E1;*/
+        /*}*/
+        canvas { /* Center the canvas */
+            margin:auto;
+            /*border: 1px solid black;*/
+        }
+        #scoreForm
+        {
+            /*visibility:hidden;*/
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+    //We first initialize the phaser game object
+    var WINDOW_WIDTH = 750;
+    var WINDOW_HEIGHT = 500;
+    var physics = {
+        default: 'arcade',
+        arcade: {
+            gravity: {y: 0},
+            debug: false
+        }
+    }
+
+    var game = new Phaser.Game(WINDOW_WIDTH, WINDOW_HEIGHT, Phaser.AUTO, 'game');
+    game.state.add("Boot",boot);
+    game.state.add("Preload",preload);
+    game.state.add("GameTitle",gameTitle);
+    game.state.add("TheGame",theGame);
+    game.state.add("GameOver",gameOver);
+    game.state.start("Boot");
+
+</script>
+
+<div class="form-group">
+    <div class="col-sm-6">
+        <p> Ship Type </p>
+        <input id="shipType" type="text" class="form-control" ng-value="main.user.ship" value="" readonly>
+    </div>
+</div>
+
+<form name="scoreForm" id="scoreForm" ng-submit="user.saveUser()">
+    <input name="score" type="string" ng-model="user.userData.score" value="0">
+    <button id="scoreFormButton" type="submit"  ng-if="user.type == 'edit'">Submit Score</button>
+</form>
+
+</body>
+</html>

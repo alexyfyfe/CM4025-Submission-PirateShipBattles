@@ -1,0 +1,30 @@
+<script>game.destroy();</script>
+
+<script type="text/javascript">
+    function reply_click(element)
+    {
+        document.getElementById('shipID').value = element.getAttribute('value');
+    }
+
+</script>
+
+<div class="jumbotron text-center">
+    <h1>{{main.user.username}} Dockyard</h1>
+    <div ng-if="main.loggedIn">
+
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship1" onclick="reply_click(this)"><img src="/assets/ship1_1.png" alt="ship1"></button>
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship2" onclick="reply_click(this)"><img src="/assets/ship2_1.png" alt="ship2"></button>
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship3" onclick="reply_click(this)"><img src="/assets/ship3_1.png" alt="ship3"></button>
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship4" onclick="reply_click(this)"><img src="/assets/ship4_1.png" alt="ship4"></button>
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship5" onclick="reply_click(this)"><img src="/assets/ship5_1.png" alt="ship5"></button>
+        <button class="shipButton" ng-model="user.userData.ship" name="action" value="ship6" onclick="reply_click(this)"><img src="/assets/ship6_1.png" alt="ship6"></button>
+
+        <form id="shipForm" ng-submit="user.saveUser()">
+            <input type="hidden" id="username" value="{{main.user._id}}">
+            <input type="hidden" id="currentShipID" value="{{main.user.ship}}">
+            <input id="shipID" type="text" ng-model="user.userData.ship" value="{{main.user.ship}}">
+            <button type="submit" class="btn btn-success" ng-if="user.type == 'edit'" data-dismiss="modal">Select</button>
+        </form>
+    </div>
+
+</div>
